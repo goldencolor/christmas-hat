@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>一键圣诞帽</title>
+    <meta name="description" itemprop="description" content="我刚更新了圣诞头像，你们也来试试吧！" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="static/global.css" />
+    <link rel="stylesheet" type="text/css" href="static/main.css" />
+</head>
+<body>
+<img id="defaultImg" class="invisible" src="static/home-default.png" />
+<input id="uploadInput" class="invisible" type="file" accept="image/*" />
+<div id="wrapperOuter" class="wrapper-outer">
+    <div id="welcomeSection" class="wrapper-inner welcome-section" style="background-image:url(static/home-bg.png);display:none;">
+        <img class="title" src="static/home-title.png" />
+        <img class="default" src="static/home-default.png" />
+        <img class="choose-btn" src="static/home-choose-btn.png" />
+    </div>
+    <div id="resultSection" class="wrapper-inner result-section" style="background-image:url(static/home-bg.png);display:none;">
+        <img class="title" src="static/home-title.png" />
+        <img id="resultImg" class="photo" />
+        <img class="choose-btn" src="static/home-choose-btn.png" />
+        <img class="choose-btn" style="cursor:default;width:24%;bottom:1%;left:37%;" src="static/pitu_logo.png" />
+    </div>
+    <div id="cropSection" class="wrapper-inner crop-section" style="display:none;">
+        <div id="cropLayer" class="crop-layer">
+            <canvas id="cropCanvas" width="420" height="420"></canvas>
+            <img id="cropImg" style="display:none;" />
+            <div class="background">&nbsp;</div>
+        </div>
+        <div id="cropMaskUp" class="crop-mask" style="visibility:hidden;">&nbsp;</div>
+        <div id="cropMaskDown" class="crop-mask" style="visibility:hidden;">&nbsp;</div>
+        <div id="cropBar" class="crop-bar">
+            <div class="choose-btn">重新选图</div>
+            <div class="next-btn">下一步</div>
+        </div>
+    </div>
+    <div id="hatSection" class="wrapper-inner hat-section" style="display:none;">
+        <div id="hatLayer" class="hat-layer">
+            <img id="hatFace" />
+            <div class="background">&nbsp;</div>
+            <div id="hatStamp" class="hat-stamp-on" style="left:0;top:0;" scale="1.0" rotation="0">
+                <img class="hat-icon" src="static/icon-hat.png" />
+                <div class="background">&nbsp;</div>
+                <div class="hat-anchor-ld" anchor="1" style="background-image:url(static/icon-anchor.png);">&nbsp;</div>
+                <div class="hat-anchor-rd" anchor="1" style="background-image:url(static/icon-anchor.png);">&nbsp;</div>
+            </div>
+        </div>
+        <div id="hatMaskUp" class="hat-mask" style="visibility:hidden;">&nbsp;</div>
+        <div id="hatMaskDown" class="hat-mask" style="visibility:hidden;">&nbsp;</div>
+        <div id="hatBar" class="hat-bar">
+            <div class="move-tips">移动圣诞帽到恰当位置</div>
+            <div class="confirm-btn">确定</div>
+        </div>
+    </div>
+    <div id="saveSection" class="wrapper-inner save-section" style="background-image:url(static/home-bg.png);display:none;">
+        <div class="share-img">
+            <img id="shareImg" />
+            <div class="save-tips">长按可保存头像</div>
+            <div class="qzcache-tips" style="display:none;">QQ空间头像若未显示，清除缓存后再试</div>
+        </div>
+        <div class="retry-btn">再定制一张</div>
+        <img class="share-btn" src="static/save-share-btn.png" />
+    </div>
+
+    <div id="loadingSection" class="wrapper-inner loading-section">
+        <div class="body">
+            <p>loading...</p>
+            <!--<img class="animate" src="" />-->
+            <p></p>
+            <div style="display:none;">关闭</div>
+        </div>
+    </div>
+
+    <div id="shareSection" class="wrapper-inner share-section" style="display:none;">
+        <div class="background">&nbsp;</div>
+        <img src="static/share-guide.png" />
+    </div>
+    <div id="qrcodeSection" class="wrapper-inner qrcode-section" style="display:none;">
+        <div class="background">&nbsp;</div>
+        <div class="body">
+            <img id="qrcodeImg" />
+            <p>请使用手机扫码体验</p>
+        </div>
+    </div>
+</div>
+<script src="static/html2canvas.min.js"></script>
+<script type="text/javascript">
+    function loadScript(filepath, onloadCallback) {
+        var scriptDom = document.createElement("script");
+        scriptDom.onload = scriptDom.onreadystatechange = onloadCallback;
+        scriptDom.type = "text/javascript";
+        scriptDom.src = filepath;
+        document.body.appendChild(scriptDom);
+    }
+
+    var zeptoScriptLoaded = false;
+    var extScriptLoaded = false;
+    var globalScriptLoaded = false;
+    var mainScriptLoaded = false;
+    var scriptAllLoaded = false;
+    function scriptLoadFinish() {
+        if (!scriptAllLoaded && zeptoScriptLoaded && extScriptLoaded && globalScriptLoaded && mainScriptLoaded) {
+            scriptAllLoaded = true;
+            window.setTimeout(function(){
+                pageReady(indexPageReady, indexPageResize);
+            }, 0);
+        }
+    }
+    loadScript("static/zepto-1.1.4.js", function(){
+        if (!zeptoScriptLoaded && (!this.readyState || this.readyState === "loaded" || this.readyState === "complete")) {
+            zeptoScriptLoaded = true;
+            window.setTimeout(scriptLoadFinish, 0);
+        }
+    });
+    loadScript("static/ext-1.0.1.js", function(){
+        if (!extScriptLoaded && (!this.readyState || this.readyState === "loaded" || this.readyState === "complete")) {
+            extScriptLoaded = true;
+            window.setTimeout(scriptLoadFinish, 0);
+        }
+    });
+    loadScript("static/global.js", function(){
+        if (!globalScriptLoaded && (!this.readyState || this.readyState === "loaded" || this.readyState === "complete")) {
+            globalScriptLoaded = true;
+            window.setTimeout(scriptLoadFinish, 0);
+        }
+    });
+    loadScript("static/main.js", function(){
+        if (!mainScriptLoaded && (!this.readyState || this.readyState === "loaded" || this.readyState === "complete")) {
+            mainScriptLoaded = true;
+            window.setTimeout(scriptLoadFinish, 0);
+        }
+    });
+</script>
+</body>
+</html>

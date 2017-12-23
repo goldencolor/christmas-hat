@@ -1,0 +1,496 @@
+body {
+    background-color:#de2b38;
+}
+
+@keyframes loading {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(359deg);}
+}
+@-webkit-keyframes loading {
+    from {-webkit-transform:rotate(0deg);}
+    to {-webkit-transform:rotate(359deg);}
+}
+.loading-section {
+    height:100%;
+    z-index:700;
+}
+.loading-section .body {
+    width:140px;
+    margin-left:-70px;
+    margin-top:-100px;
+    border-radius:15px;
+    background-color:white;
+    text-align:center;
+    position:absolute;
+    left:50%;
+    top:50%;
+}
+.loading-section .body img {
+    width:52px;
+    margin-top:20px;
+}
+.loading-section .body img.animate {
+    animation: loading 0.8s linear 0s infinite;
+    -webkit-animation: loading 0.8s linear 0s infinite;
+}
+.loading-section .body p {
+    margin:15px auto;
+    padding:0 10px;
+    line-height:15px;
+    text-align:center;
+    font-size:14px;
+    color:#de2b38;
+    font-family:"FZLTZCHK--GBK1-0";
+}
+.loading-section .body div {
+    width:100px;
+    height:30px;
+    line-height:30px;
+    margin:0 auto 15px auto;
+    padding:0 10px;
+    background-color:#de2b38;
+    color:white;
+    border-radius:15px;
+    text-align:center;
+    font-size:14px;
+    font-family:"FZLTZCHK--GBK1-0";
+    cursor:pointer;
+}
+
+.welcome-section {
+    z-index:100;
+}
+.welcome-section img.title {
+    width:72%;
+    position:absolute;
+    left:14%;
+    top:5%;
+}
+.welcome-section img.default {
+    width:66%;
+    position:absolute;
+    left:18%;
+    top:26%;
+}
+.welcome-section img.choose-btn {
+    width:50%;
+    position:absolute;
+    left:25%;
+    bottom:9%;
+    cursor:pointer;
+}
+
+.result-section {
+    z-index:100;
+}
+.result-section img.title {
+    width:72%;
+    position:absolute;
+    left:14%;
+    top:5%;
+}
+.result-section img.photo {
+    width:64%;
+    border-radius:8px;
+    box-shadow:8px 8px 0px rgba(222, 43, 56, 0.3);
+    position:absolute;
+    left:18%;
+    top:32%;
+}
+.result-section .choose-btn {
+    width:50%;
+    position:absolute;
+    left:25%;
+    bottom:9%;
+    cursor:pointer;
+}
+
+.crop-section {
+    z-index:200;
+    background-color:white;
+}
+.crop-section .crop-layer {
+    width:100%;
+    height:100%;
+    position:relative;
+    z-index:212;
+}
+.crop-section .crop-layer canvas {
+    visibility:hidden;
+    position:absolute;
+    left:-360px;
+    top:-360px;
+    z-index:213;
+}
+.crop-section .crop-layer img {
+    position:absolute;
+    z-index:214;
+}
+.crop-section .crop-layer .background {
+    background-color:transparent;
+    opacity:0;
+    position:absolute;
+    left:0;
+    top:0;
+    z-index:215;
+}
+.crop-section .crop-mask {
+    width:100%;
+    background-color:black;
+    opacity:0.7;
+    position:absolute;
+    z-index:216;
+}
+.crop-section .crop-bar {
+    width:100%;
+    height:120px;
+    background-color:white;
+    position:absolute;
+    left:0;
+    bottom:0;
+    z-index:220;
+}
+.crop-section .crop-bar .choose-btn {
+    width:103px;
+    height:32px;
+    line-height:32px;
+    margin-left:-120px;
+    border-radius:16px;
+    border:1px solid #e03945;
+    color:#e03945;
+    font-size:14px;
+    text-align:center;
+    position:absolute;
+    left:50%;
+    bottom:40px;
+    cursor:pointer;
+}
+.crop-section .crop-bar .next-btn {
+    width:105px;
+    height:34px;
+    line-height:34px;
+    margin-left:15px;
+    border-radius:16px;
+    background-color:#e03945;
+    color:white;
+    font-size:14px;
+    text-align:center;
+    position:absolute;
+    left:50%;
+    bottom:40px;
+    cursor:pointer;
+}
+
+.hat-section {
+    z-index:300;
+    background-color:white;
+}
+.hat-section .hat-layer {
+    width:100%;
+    height:100%;
+    position:relative;
+    z-index:212;
+}
+.hat-section .hat-layer img#hatFace {
+    width:100%;
+    height:100%;
+    position:absolute;
+    left:0;
+    top:0;
+    z-index:214;
+}
+.hat-section .hat-layer .background {
+    background-color:transparent;
+    opacity:0;
+    position:absolute;
+    left:0;
+    top:0;
+    z-index:215;
+}
+.hat-section .hat-layer #hatStamp {
+    width:240px;
+    height:144px;
+    padding:10px;
+    position:absolute;
+    z-index:216;
+}
+.hat-section .hat-layer #hatStamp img.hat-icon {
+    width:100%;
+    height:100%;
+}
+.hat-section .hat-layer .hat-stamp-on {
+    border:1px dotted rgba(255, 255, 255, 0.5);
+}
+.hat-section .hat-layer .hat-stamp-off {
+    border:1px dotted transparent;
+}
+.hat-section .hat-layer .hat-stamp-on .hat-anchor-ld,
+.hat-section .hat-layer .hat-stamp-on .hat-anchor-rd {
+    display:block;
+    width:24px;
+    height:24px;
+    background-repeat:no-repeat;
+    background-position:top center;
+    background-size:cover;
+    position:absolute;
+    z-index:217;
+}
+.hat-section .hat-layer .hat-stamp-off .hat-anchor-ld,
+.hat-section .hat-layer .hat-stamp-off .hat-anchor-rd {
+    display:none;
+}
+.hat-section .hat-layer .hat-stamp-on .hat-anchor-ld {
+    margin-left:-12px;
+    margin-bottom:-12px;
+    left:0;
+    bottom:0;
+    transform:rotate(90deg);
+    -webkit-transform:rotate(90deg);
+}
+.hat-section .hat-layer .hat-stamp-on .hat-anchor-rd {
+    margin-right:-12px;
+    margin-bottom:-12px;
+    right:0;
+    bottom:0;
+}
+.hat-section .hat-mask {
+    width:100%;
+    background-color:white;
+    opacity:0.7;
+    position:absolute;
+    z-index:216;
+}
+.hat-section .hat-bar {
+    width:100%;
+    height:120px;
+    background-color:white;
+    position:absolute;
+    left:0;
+    bottom:0;
+    z-index:220;
+}
+.hat-section .hat-bar .move-tips {
+    width:100%;
+    height:30px;
+    line-height:30px;
+    color:black;
+    font-size:12px;
+    text-align:center;
+    position:absolute;
+    left:0;
+    bottom:80px;
+}
+.hat-section .hat-bar .confirm-btn {
+    width:105px;
+    height:34px;
+    line-height:34px;
+    margin-left:-52.5px;
+    border-radius:16px;
+    background-color:#e03945;
+    color:white;
+    font-size:14px;
+    text-align:center;
+    position:absolute;
+    left:50%;
+    bottom:45px;
+    cursor:pointer;
+}
+
+.save-section {
+    z-index:400;
+    background-color:#de2b38;
+}
+.save-section .share-img {
+    width:64%;
+    position:absolute;
+    left:18%;
+    top:12%;
+}
+.save-section .share-img img {
+    width:100%;
+    border-radius:8px;
+    box-shadow:8px 8px 0px rgba(222, 43, 56, 0.3);
+}
+.save-section .share-img .save-tips {
+    width:120px;
+    height:24px;
+    line-height:24px;
+    border-radius:12px;
+    background-color:rgba(0, 0, 0, 0.5);
+    color:white;
+    text-align:center;
+    font-size:12px;
+    position:absolute;
+    right:10px;
+    bottom:12px;
+}
+.save-section .share-img .qzcache-tips {
+    width:96%;
+    height:24px;
+    line-height:24px;
+    border-radius:12px;
+    background-color:rgba(0, 0, 0, 0.5);
+    color:white;
+    text-align:center;
+    font-size:0.6em;
+    position:absolute;
+    right:2%;
+    bottom:12px;
+}
+.save-section .setupwx-tips {
+    width:64%;
+    height:20px;
+    line-height:20px;
+    color:#6f0e14;
+    font-size:0.6em;
+    text-align:center;
+    position:absolute;
+    left:18%;
+    bottom:33%;
+}
+.save-section .setupwx-tips span {
+    color:white;
+}
+.save-section .setupqz-tips {
+    width:64%;
+    height:20px;
+    line-height:20px;
+    color:white;
+    font-size:0.6em;
+    text-align:center;
+    vertical-align:middle;
+    position:absolute;
+    left:18%;
+    bottom:33%;
+}
+.save-section .setupqz-tips img {
+    width:12px;
+    height:12px;
+    margin-top:-2px;
+    vertical-align:middle;
+}
+.save-section img.share-btn {
+    width:50%;
+    position:absolute;
+    left:25%;
+    bottom:24%;
+    cursor:pointer;
+}
+.save-section .retry-btn {
+    width:100%;
+    height:30px;
+    line-height:30px;
+    color:white;
+    text-decoration:underline;
+    font-size:0.8em;
+    text-align:center;
+    cursor:pointer;
+    position:absolute;
+    left:0;
+    bottom:16%;
+}
+.save-section .bottom-bar {
+    width:100%;
+    height:10%;
+    position:absolute;
+    left:0;
+    bottom:0;
+}
+@keyframes bottom_bar_bg {
+    from {transform:translate(0px, 80px);}
+    50% {transform:translate(0px, -20px);}
+    to {transform:translate(0px, 0px);}
+}
+@-webkit-keyframes bottom_bar_bg {
+    from {-webkit-transform:translate(0px, 80px);}
+    50% {-webkit-transform:translate(0px, -20px);}
+    to {-webkit-transform:translate(0px, 0px);}
+}
+.save-section .bottom-bar img.bg {
+    width:100%;
+    position:absolute;
+    left:0;
+    bottom:0;
+    transform:translate(0px, 80px);
+    animation:bottom_bar_bg 0.6s;
+    animation-fill-mode:forwards;
+    -webkit-transform:translate(0px, 80px);
+    -webkit-animation:bottom_bar_bg 0.6s;
+    -webkit-animation-fill-mode:forwards;
+}
+.save-section .bottom-bar .model {
+    width:28%;
+    position:absolute;
+    left:8%;
+    bottom:-10%;
+}
+@keyframes bottom_bar_item {
+    from {transform:scale(0.2);opacity:0;}
+    50% {transform:scale(1);opacity:0.5;}
+    75% {transform:scale(0.8);opacity:0.75;}
+    to {transform:scale(1);opacity:1;}
+}
+@-webkit-keyframes bottom_bar_item {
+    from {-webkit-transform:scale(0.2);opacity:0;}
+    50% {-webkit-transform:scale(1);opacity:0.5;}
+    75% {-webkit-transform:scale(0.8);opacity:0.75;}
+    to {-webkit-transform:scale(1);opacity:1;}
+}
+.save-section .bottom-bar .model img.photo {
+    width:100%;
+    opacity:0;
+    transform:scale(0.2);
+    animation:bottom_bar_item 0.5s linear 0.5s;
+    animation-fill-mode:forwards;
+    -webkit-transform:scale(0.2);
+    -webkit-animation:bottom_bar_item 0.5s linear 0.5s;
+    -webkit-animation-fill-mode:forwards;
+}
+.save-section .bottom-bar .model img.hat {
+    width:52%;
+    position:absolute;
+    left:24%;
+    top:-28%;
+    opacity:0;
+    transform:scale(0.2);
+    animation:bottom_bar_item 0.5s linear 0.9s;
+    animation-fill-mode:forwards;
+    -webkit-transform:scale(0.2);
+    -webkit-animation:bottom_bar_item 0.5s linear 0.9s;
+    -webkit-animation-fill-mode:forwards;
+}
+.save-section .bottom-bar .model img.gift {
+    width:42%;
+    position:absolute;
+    left:-15%;
+    bottom:4%;
+    opacity:0;
+    transform:scale(0.2);
+    animation:bottom_bar_item 0.5s linear 1.3s;
+    animation-fill-mode:forwards;
+    -webkit-transform:scale(0.2);
+    -webkit-animation:bottom_bar_item 0.5s linear 1.3s;
+    -webkit-animation-fill-mode:forwards;
+}
+.save-section .bottom-bar .model img.santa {
+    width:44%;
+    position:absolute;
+    right:-10%;
+    bottom:8%;
+    opacity:0;
+    transform:scale(0.2);
+    animation:bottom_bar_item 0.5s linear 1.7s;
+    animation-fill-mode:forwards;
+    -webkit-transform:scale(0.2);
+    -webkit-animation:bottom_bar_item 0.5s linear 1.7s;
+    -webkit-animation-fill-mode:forwards;
+}
+.save-section .bottom-bar .download-btn {
+    width:93%;
+    height:80%;
+    opacity:0.5;
+    position:absolute;
+    right:3.5%;
+    bottom:10%;
+    cursor:pointer;
+}
